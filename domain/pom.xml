@@ -9,10 +9,16 @@
   </parent>
 
   <artifactId>domain</artifactId>
-  <packaging>jar</packaging>
+  <packaging>pom</packaging>
 
   <name>domain</name>
   <url>http://maven.apache.org</url>
+  <modules>
+    <module>ports</module>
+    <module>services</module>
+    <module>models</module>
+    <module>service-beans</module>
+  </modules>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
