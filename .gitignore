@@ -1,5 +1,35 @@
+# Maven
+target/
+**/target/
+
+# IntelliJ project files 
+*.iml
+*.iws
+*.ipr
+.idea/
 .idea
-./.idea/**
-./.idea/*
-./target
-./target/**
+
+# eclipse project file
+.settings/
+.classpath
+.project
+
+# Binaries
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+*.war
+*.ear
+*.sar
+*.class
+
+# Misc
+*.swp
+release.properties
+pom.xml.releaseBackup
+pom.xml.tag
