@@ -6,20 +6,14 @@
     <groupId>org.example</groupId>
     <artifactId>template</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <relativePath>../../../pom.xml</relativePath>
   </parent>
 
-  <artifactId>domain</artifactId>
-  <packaging>pom</packaging>
+  <artifactId>data</artifactId>
+  <packaging>jar</packaging>
 
-  <name>domain</name>
+  <name>data</name>
   <url>http://maven.apache.org</url>
-  <modules>
-    <module>ports</module>
-    <module>services</module>
-    <module>models</module>
-    <module>service-beans</module>
-    <module>tests</module>
-  </modules>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
