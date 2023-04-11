@@ -10,7 +10,7 @@
   </parent>
 
   <artifactId>outgoing</artifactId>
-  <packaging>jar</packaging>
+  <packaging>pom</packaging>
 
   <name>outgoing</name>
   <url>http://maven.apache.org</url>
