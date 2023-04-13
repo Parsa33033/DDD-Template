@@ -10,7 +10,7 @@
   </parent>
   <groupId>org.example</groupId>
   <artifactId>template</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>${appversion}</version>
   <packaging>pom</packaging>
 
   <name>template</name>
@@ -56,7 +56,6 @@
       <artifactId>spring-boot-starter-test</artifactId>
       <scope>test</scope>
     </dependency>
-
   </dependencies>
 
   <build>
