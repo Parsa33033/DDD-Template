@@ -6,12 +6,13 @@
     <groupId>org.example</groupId>
     <artifactId>template</artifactId>
     <version>${revision}</version>
+    <relativePath>../../../pom.xml</relativePath>
   </parent>
 
-  <artifactId>application</artifactId>
+  <artifactId>steps</artifactId>
   <packaging>jar</packaging>
 
-  <name>application</name>
+  <name>steps</name>
   <url>http://maven.apache.org</url>
 
   <properties>
@@ -19,11 +20,6 @@
   </properties>
 
   <dependencies>
-    <dependency>
-      <groupId>org.example</groupId>
-      <artifactId>framework</artifactId>
-      <version>${project.version}</version>
-    </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>

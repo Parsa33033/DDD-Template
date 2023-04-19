@@ -5,7 +5,7 @@
   <parent>
     <groupId>org.example</groupId>
     <artifactId>template</artifactId>
-    <version>${appversion}</version>
+    <version>${revision}</version>
   </parent>
 
   <artifactId>domain</artifactId>
@@ -14,11 +14,11 @@
   <name>domain</name>
   <url>http://maven.apache.org</url>
   <modules>
-    <module>ports</module>
-    <module>services</module>
-    <module>models</module>
-    <module>service-beans</module>
-    <module>tests</module>
+    <module>port</module>
+    <module>service</module>
+    <module>model</module>
+    <module>service-bean</module>
+    <module>test</module>
   </modules>
 
   <properties>
