@@ -17,9 +17,6 @@ public class CustomerOrderLink extends ReadOnlyEntity<CustomerOrderLink, Custome
   @NotNull
   private Identifier orderIdentifier;
 
-  CustomerOrderLink() {
-  }
-
   CustomerOrderLink(CustomerOrderLinkBuilder builder) {
     this.customerIdentifier = builder.customerIdentifier;
     this.orderIdentifier = builder.orderIdentifier;
@@ -32,11 +29,6 @@ public class CustomerOrderLink extends ReadOnlyEntity<CustomerOrderLink, Custome
         .customerIdentifier(tryGetObject(customerIdentifier, Identifier::value))
         .orderIdentifier(tryGetObject(orderIdentifier, Identifier::value))
         .build();
-  }
-
-  @Override
-  public CustomerOrderLink toEntity() {
-    return new CustomerOrderLinkBuilder(toDataTransferObject()).build();
   }
 
   public static CustomerOrderLink fromDataTransferObject(final CustomerOrderLinkData dto) {

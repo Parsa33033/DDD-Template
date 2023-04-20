@@ -1,9 +1,8 @@
 package org.example.framework.mapper;
 
-public interface Mapper<E, D> {
+public interface Mapper<O, D> extends DomainObjectMapper<O>, DataTransferObjectMapper<D> {
 
   D toDataTransferObject();
 
-  E toEntity();
-
+  O toDomainObjectMapper();
 }

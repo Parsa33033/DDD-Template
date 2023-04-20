@@ -8,7 +8,6 @@ public abstract class DomainObjectBuilder<O, D> {
 
   public DomainObjectBuilder(D dto) {
     this.dto = dto;
-    this.build();
   }
 
   protected abstract O build();
