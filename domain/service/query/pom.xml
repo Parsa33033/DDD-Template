@@ -9,10 +9,10 @@
     <relativePath>../../pom.xml</relativePath>
   </parent>
 
-  <artifactId>orchestration-service</artifactId>
+  <artifactId>query</artifactId>
   <packaging>jar</packaging>
 
-  <name>orchestration-service</name>
+  <name>query-service</name>
   <url>http://maven.apache.org</url>
 
   <properties>

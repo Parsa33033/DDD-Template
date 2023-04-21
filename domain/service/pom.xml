@@ -14,9 +14,9 @@
   <name>services</name>
   <url>http://maven.apache.org</url>
   <modules>
-    <module>command-service</module>
-    <module>orchestration-service</module>
-    <module>query-service</module>
+    <module>command</module>
+    <module>orchestration</module>
+    <module>query</module>
   </modules>
 
   <properties>

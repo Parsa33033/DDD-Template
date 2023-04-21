@@ -9,7 +9,7 @@
     <relativePath>../../pom.xml</relativePath>
   </parent>
 
-  <artifactId>command-service</artifactId>
+  <artifactId>command</artifactId>
   <packaging>jar</packaging>
 
   <name>command-service</name>
