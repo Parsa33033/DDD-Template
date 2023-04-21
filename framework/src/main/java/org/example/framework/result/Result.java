@@ -2,9 +2,9 @@ package org.example.framework.result;
 
 import java.util.Objects;
 import java.util.function.Function;
-import org.example.framework.error.ErrorCode;
+import org.example.framework.error.Error;
 
-public final class Result<O, E extends ErrorCode> {
+public final class Result<O, E extends Error> {
 
   private final O object;
   private final E error;
@@ -14,7 +14,7 @@ public final class Result<O, E extends ErrorCode> {
     this.error = error;
   }
 
-  public static <U, V extends ErrorCode> Result<U, V> of(U object, V error) {
+  public static <U, V extends Error> Result<U, V> of(U object, V error) {
     if (error != null) {
       return Result.error(error);
     } else {
@@ -22,12 +22,12 @@ public final class Result<O, E extends ErrorCode> {
     }
   }
 
-  public static <U, V extends ErrorCode> Result<U, V> ok(U object) {
+  public static <U, V extends Error> Result<U, V> ok(U object) {
     Objects.requireNonNull(object, "object should not be null");
     return new Result<>(object, null);
   }
 
-  public static <U, V extends ErrorCode> Result<U, V> error(V error) {
+  public static <U, V extends Error> Result<U, V> error(V error) {
     Objects.requireNonNull(error, "error should not be null");
     return new Result<>(null, error);
   }
@@ -48,7 +48,7 @@ public final class Result<O, E extends ErrorCode> {
     }
   }
 
-  public <V extends ErrorCode> Result<O, V> mapError(Function<E, V> mapper) {
+  public <V extends Error> Result<O, V> mapError(Function<E, V> mapper) {
     if (isError()) {
       return Result.error(mapper.apply(error));
     } else {

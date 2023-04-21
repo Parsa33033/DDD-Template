@@ -1,11 +1,18 @@
 package org.example.model.config.error;
 
-import static org.example.model.config.error.FieldErrorCode.NULL_POINTER;
+import static org.example.model.config.error.OperationErrorCode.*;
+import static org.example.model.config.error.OperationErrorMessage.*;
 
 import org.example.framework.error.ErrorCodeMessageInitializer;
 
 public class DomainErrorCodeMessageInitializer extends ErrorCodeMessageInitializer {
 
+  private static final DomainErrorCodeMessageInitializer instance =
+      new DomainErrorCodeMessageInitializer();
+
+  public static void init() {
+    instance.initialize();
+  }
 
   @Override
   public void initialize() {
@@ -13,6 +20,7 @@ public class DomainErrorCodeMessageInitializer extends ErrorCodeMessageInitializ
   }
 
   private void addFieldErrors() {
-    addMessage(NULL_POINTER, "null pointer was found");
+    addMessage(OTHER, MSG_CUSTOMER_NOT_FOUND);
+    addMessage(CUSTOMER_NOT_FOUND, MSG_CUSTOMER_NOT_FOUND);
   }
 }

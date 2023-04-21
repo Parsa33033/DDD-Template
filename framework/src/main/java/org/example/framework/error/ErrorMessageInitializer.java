@@ -1,6 +1,6 @@
 package org.example.framework.error;
 
-public interface ErrorMessageInitializer {
+public interface ErrorMessageInitializer extends ErrorMessage {
 
   void initialize();
 
