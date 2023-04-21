@@ -31,5 +31,17 @@
       <version>${parent.version}</version>
       <scope>compile</scope>
     </dependency>
+    <dependency>
+      <groupId>org.example</groupId>
+      <artifactId>dto</artifactId>
+      <version>${parent.version}</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.example</groupId>
+      <artifactId>model</artifactId>
+      <version>${parent.version}</version>
+      <scope>compile</scope>
+    </dependency>
   </dependencies>
 </project>
