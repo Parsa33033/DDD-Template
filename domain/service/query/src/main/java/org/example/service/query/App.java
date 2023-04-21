@@ -1,4 +1,4 @@
-package org.example;
+package org.example.service.query;
 
 /**
  * Hello world!

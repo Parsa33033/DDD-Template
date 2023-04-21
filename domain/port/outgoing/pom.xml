@@ -14,6 +14,11 @@
   <name>outgoing</name>
   <url>http://maven.apache.org</url>
 
+  <modules>
+    <module>command-repository</module>
+    <module>query-repository</module>
+  </modules>
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>

@@ -6,8 +6,8 @@ import org.example.framework.error.Error;
 
 public final class Result<O, E extends Error> {
 
-  private final O object;
-  private final E error;
+  public final O object;
+  public final E error;
 
   private Result(O object, E error) {
     this.object = object;

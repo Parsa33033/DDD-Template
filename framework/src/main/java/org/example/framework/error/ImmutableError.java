@@ -18,6 +18,11 @@ public final class ImmutableError implements Error {
     return new ImmutableError(code, tryGetMessageForCode(code), "");
   }
 
+  @Override
+  public String code() {
+    return code;
+  }
+
   public static ImmutableError of(String code, String hint) {
     return new ImmutableError(code, tryGetMessageForCode(code), hint);
   }
