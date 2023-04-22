@@ -3,7 +3,7 @@ package org.example.framework.error;
 import org.example.framework.DomainConfig;
 
 public final class ImmutableError implements Error {
-
+  public static final Error OTHER = ImmutableError.of("OTHER", "internal error");
   private final String code;
   private final String message;
   private final String hint;

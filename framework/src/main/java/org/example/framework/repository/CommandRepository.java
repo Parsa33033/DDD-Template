@@ -1,5 +1,5 @@
 package org.example.framework.repository;
 
-public interface CommandRepository {
+public interface CommandRepository extends Repository {
 
 }

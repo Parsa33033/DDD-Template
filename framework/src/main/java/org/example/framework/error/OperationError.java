@@ -2,6 +2,7 @@ package org.example.framework.error;
 
 public class OperationError implements Error {
 
+  public static String OTHER = ImmutableError.OTHER.code();
 
   public final Error error;
 
