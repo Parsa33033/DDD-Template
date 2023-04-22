@@ -60,5 +60,11 @@
       <version>${parent.version}</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.example</groupId>
+      <artifactId>mocks</artifactId>
+      <version>${parent.version}</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 </project>

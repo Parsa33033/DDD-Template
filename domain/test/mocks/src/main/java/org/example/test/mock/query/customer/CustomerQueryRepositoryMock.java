@@ -33,7 +33,7 @@ public class CustomerQueryRepositoryMock implements RepositoryMock<CustomerQuery
       final UUID identifier, final Result<CustomerData, CustomerQueryError> result) {
     Objects.requireNonNull(identifier, "identifier should not be null");
     Objects.requireNonNull(result, "result should not be null");
-    doReturn(result)
+    doReturn(CompletableFuture.completedFuture(result))
         .when(customerQueryRepository)
         .getCustomerByUUID(argThat(new FindByUUIDMatcher(identifier)));
   }
@@ -43,12 +43,12 @@ public class CustomerQueryRepositoryMock implements RepositoryMock<CustomerQuery
       final Result<CustomerData, CustomerQueryError> result) {
     Objects.requireNonNull(matcher, "matcher should not be null");
     Objects.requireNonNull(result, "result should not be null");
-    doReturn(result).when(customerQueryRepository).getCustomerByUUID(argThat(matcher));
+    doReturn(CompletableFuture.completedFuture(result)).when(customerQueryRepository).getCustomerByUUID(argThat(matcher));
   }
 
   public void mockAnyGetCustomerByUUIDResult(final Result<CustomerData, CustomerQueryError> result) {
     Objects.requireNonNull(result, "result should not be null");
-    doReturn(result).when(customerQueryRepository).getCustomerByUUID(any());
+    doReturn(CompletableFuture.completedFuture(result)).when(customerQueryRepository).getCustomerByUUID(any());
   }
 
   public void mockAnyGetCustomerByUUIDThrows(final Throwable throwable) {
