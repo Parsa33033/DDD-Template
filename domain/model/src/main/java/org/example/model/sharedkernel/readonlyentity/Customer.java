@@ -32,7 +32,7 @@ public class Customer extends ReadOnlyEntity<Customer, CustomerData> {
         .build();
   }
 
-  public Customer fromDataTransferObject(CustomerData customerData) {
+  public static Customer fromDataTransferObject(CustomerData customerData) {
     return new CustomerBuilder(customerData).build();
   }
 
