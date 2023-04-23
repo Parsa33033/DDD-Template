@@ -49,4 +49,9 @@ public class CustomerCommandRepositoryInteraction implements
     data.setCustomerRegister(aggregateRoot);
     return data;
   }
+
+  @Override
+  public <T extends CustomerCommandServiceInteractionData> boolean noChange(final T data) {
+    return false;
+  }
 }

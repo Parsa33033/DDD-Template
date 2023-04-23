@@ -13,4 +13,6 @@ public interface RepositoryInteraction<D, R, A extends AggregateRoot> {
   <T extends D> CompletableFuture<Result<R, Error>> write(T data);
 
   <T extends D> T updateAggregateRoot(T data, A aggregateRoot);
+
+  <T extends D> boolean noChange(T data);
 }
