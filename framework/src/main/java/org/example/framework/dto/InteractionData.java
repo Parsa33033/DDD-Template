@@ -1,5 +1,5 @@
 package org.example.framework.dto;
 
-public interface InteractionData {
+public interface InteractionData extends DataTransferObject{
 
 }

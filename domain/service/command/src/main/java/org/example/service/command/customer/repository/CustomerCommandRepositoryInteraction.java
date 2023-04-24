@@ -17,7 +17,7 @@ import org.example.service.command.customer.CustomerCommandServiceInteractionDat
 import org.example.service.command.customer.domain.aggregate.CustomerRegister;
 
 public class CustomerCommandRepositoryInteraction implements
-    RepositoryInteraction<CustomerCommandServiceInteractionData, Nothing, CustomerRegister> {
+    RepositoryInteraction<CustomerCommandServiceInteractionData, CustomerData, CustomerRegister> {
 
   private final CustomerCommandRepository repository;
 
@@ -36,7 +36,7 @@ public class CustomerCommandRepositoryInteraction implements
   }
 
   @Override
-  public <T extends CustomerCommandServiceInteractionData> CompletableFuture<Result<Nothing,
+  public <T extends CustomerCommandServiceInteractionData> CompletableFuture<Result<CustomerData,
       Error>> write(
       final T data) {
     return null;
@@ -44,8 +44,7 @@ public class CustomerCommandRepositoryInteraction implements
 
   @Override
   public <T extends CustomerCommandServiceInteractionData> T updateAggregateRoot(
-      T data,
-      CustomerRegister aggregateRoot) {
+      T data, CustomerRegister aggregateRoot) {
     data.setCustomerRegister(aggregateRoot);
     return data;
   }

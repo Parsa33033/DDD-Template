@@ -3,7 +3,7 @@ package org.example.service.command.customer.operation;
 import org.example.dto.graph.CustomerData;
 import org.example.service.command.customer.CustomerCommandServiceInteractionData;
 
-public class EnsureCustomerData extends CustomerCommandServiceInteractionData {
+public class EnsureCustomerOperationData extends CustomerCommandServiceInteractionData {
 
   private CustomerData customerData;
 

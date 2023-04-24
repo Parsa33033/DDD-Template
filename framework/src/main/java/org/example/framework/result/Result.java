@@ -1,6 +1,7 @@
 package org.example.framework.result;
 
 import java.util.Objects;
+import java.util.concurrent.CompletableFuture;
 import java.util.function.Function;
 import org.example.framework.error.Error;
 
@@ -54,5 +55,12 @@ public final class Result<O, E extends Error> {
     } else {
       return Result.ok(object);
     }
+  }
+
+  public static <C, D, E extends Error> Function<Result<D, E>, CompletableFuture<Result<D, Error>>> checkPreviousFutureResult(
+      Function<D, CompletableFuture<Result<D, Error>>> func) {
+    return prev -> prev.isOk()
+        ? func.apply(prev.object)
+        : CompletableFuture.completedFuture(Result.error(prev.error));
   }
 }
