@@ -8,5 +8,5 @@ import org.example.framework.service.CommandService;
 
 public interface CustomerCommandService extends CommandService {
 
-  CompletableFuture<Result<CustomerData, CustomerServiceError>> createCustomer(CustomerServiceCommand command);
+  CompletableFuture<Result<CustomerData, CustomerServiceError>> ensureCustomer(CustomerServiceCommand command);
 }

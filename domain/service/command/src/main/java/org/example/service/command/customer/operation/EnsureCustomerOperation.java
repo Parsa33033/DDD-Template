@@ -2,9 +2,11 @@ package org.example.service.command.customer.operation;
 
 import static org.example.framework.result.Result.checkPreviousFutureResult;
 
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import org.example.dto.graph.CustomerData;
 import org.example.framework.error.Error;
+import org.example.framework.error.OperationError;
 import org.example.framework.interaction.OperationInteraction;
 import org.example.framework.result.Result;
 import org.example.incoming.service.customer.CustomerServiceCommand;
@@ -35,13 +37,19 @@ public class EnsureCustomerOperation implements
   @Override
   public CompletableFuture<Result<EnsureCustomerOperationData, CustomerServiceError>> validate(
       final CustomerServiceCommand command) {
-    return null;
+    if (command.customer() == null || command.customer().identifier() == null) {
+      return CompletableFuture.completedFuture(Result.error(CustomerServiceError.of(OperationError.OTHER)));
+    }
+    EnsureCustomerOperationData data = new EnsureCustomerOperationData();
+    data.setCustomerIdentifier(Optional.of(command.customer().identifier()));
+    data.setCustomerData(command.customer());
+    return CompletableFuture.completedFuture(Result.ok(data));
   }
 
   @Override
   public CompletableFuture<Result<EnsureCustomerOperationData, Error>> read(
       final EnsureCustomerOperationData data) {
-    return this.customerCommandRepositoryInteraction.read(data);
+    return this.customerCommandRepositoryInteraction.read(data).thenApply(result -> Result.ok(data));
   }
 
   @Override

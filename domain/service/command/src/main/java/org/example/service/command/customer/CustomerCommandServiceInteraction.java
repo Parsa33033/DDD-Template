@@ -24,7 +24,7 @@ public class CustomerCommandServiceInteraction implements CustomerCommandService
   }
 
   @Override
-  public CompletableFuture<Result<CustomerData, CustomerServiceError>> createCustomer(
+  public CompletableFuture<Result<CustomerData, CustomerServiceError>> ensureCustomer(
       final CustomerServiceCommand command) {
     return ensureCustomerOperation.execute(command);
   }

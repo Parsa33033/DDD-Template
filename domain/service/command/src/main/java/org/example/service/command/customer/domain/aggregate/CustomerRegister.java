@@ -31,6 +31,7 @@ public class CustomerRegister implements AggregateRoot<CustomerRegister, Custome
       }
       return Result.ok(ImmutableCustomerChange
           .builder()
+          .customerData(this.customer.toDataTransferObject())
           .updateCustomer(ImmutableUpdateCustomer.builder().customerData(customerData).build())
           .build());
     }

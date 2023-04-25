@@ -1,6 +1,7 @@
 package org.example.service.command.customer.repository;
 
 import java.util.concurrent.CompletableFuture;
+import org.example.dto.aggregate.ImmutableCustomerRegisterData;
 import org.example.dto.graph.CustomerData;
 import org.example.framework.error.Error;
 import org.example.framework.interaction.RepositoryInteraction;
@@ -31,10 +32,16 @@ public class CustomerCommandRepositoryInteraction implements
   public <T extends CustomerCommandServiceInteractionData> CompletableFuture<Result<T, Error>> read(
       final T data) {
     return repository
-        .read(ImmutableCustomerReadCommand.builder().build())
+        .read(ImmutableCustomerReadCommand
+            .builder()
+            .customerIdentifier(data.getCustomerIdentifier().orElse(null))
+            .build())
         .thenApply(result -> result
             .map(d -> updateAggregateRoot(data, CustomerRegister.fromDataTransferObject(d)))
-            .mapError(e -> Error.of(e.code)));
+            .mapError(e -> {
+              newAggregateRoot(data);
+              return Error.of(e.code);
+            }));
   }
 
   @Override
@@ -66,10 +73,18 @@ public class CustomerCommandRepositoryInteraction implements
     return data;
   }
 
+  public <T extends CustomerCommandServiceInteractionData> T newAggregateRoot(
+      T data) {
+    CustomerRegister aggregateRoot = CustomerRegister.fromDataTransferObject(
+        ImmutableCustomerRegisterData.builder().build());
+    data.setCustomerRegister(aggregateRoot);
+    return data;
+  }
+
   @Override
   public <T extends CustomerCommandServiceInteractionData> boolean noChange(final T data) {
-    return data.getCustomerChange() == null || data.getCustomerChange().createCustomer() == null
-        || data.getCustomerChange().updateCustomer() == null;
+    return data.getCustomerChange() == null || ( data.getCustomerChange().createCustomer() == null
+        && data.getCustomerChange().updateCustomer() == null);
   }
 
   public boolean createChangeIsApplied(final CustomerCommandServiceInteractionData data) {
