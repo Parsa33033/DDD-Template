@@ -85,9 +85,17 @@ public class CustomerCommandServiceInteractionStepDefs {
         .customerData()
         .identifier());
     assertNotNull(command, "command should not be null");
-    assertEquals(
-        customerTest.customerData(),
+    assertEquals(customerTest.customerData(),
         command.customerChange().createCustomer().customerData());
+  }
+
+  @Then("customer is updated with")
+  public void customerIsUpdated(DataTable dataTable) {
+    CustomerData customerData = CustomerStepDefs.createCustomerData(dataTable);
+    CustomerWriteCommand command =
+        customerCommandRepositoryMockConfig.captureCommand(customerData.identifier());
+    assertNotNull(command, "command should not be null");
+    assertEquals(customerData, command.customerChange().updateCustomer().customerData());
   }
 
   @Then("returned customer is")
