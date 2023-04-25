@@ -6,7 +6,7 @@ import org.example.model.config.error.OperationErrorCode;
 
 public class CustomerReadError extends OperationError {
 
-  private static String CUSTOMER_NOT_FOUND = OperationErrorCode.CUSTOMER_NOT_FOUND;
+  public static String CUSTOMER_NOT_FOUND = OperationErrorCode.CUSTOMER_NOT_FOUND;
 
   protected CustomerReadError(final String code) {
     super(code);

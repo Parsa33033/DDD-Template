@@ -32,10 +32,21 @@
       <scope>compile</scope>
     </dependency>
     <dependency>
+      <groupId>info.cukes</groupId>
+      <artifactId>cucumber-picocontainer</artifactId>
+      <version>1.2.5</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
       <groupId>org.example</groupId>
       <artifactId>personas</artifactId>
       <version>${parent.version}</version>
       <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.example</groupId>
+      <artifactId>bean</artifactId>
+      <version>${parent.version}</version>
     </dependency>
   </dependencies>
 </project>

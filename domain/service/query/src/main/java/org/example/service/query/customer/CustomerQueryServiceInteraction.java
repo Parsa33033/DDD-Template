@@ -9,11 +9,11 @@ import org.example.incoming.service.customer.CustomerServiceQuery;
 import org.example.outgoing.repository.customer.CustomerQueryRepository;
 import org.example.outgoing.repository.customer.ImmutableCustomerQuery;
 
-public class CustomerQueryInteractionService implements CustomerQueryService {
+public class CustomerQueryServiceInteraction implements CustomerQueryService {
 
   private final CustomerQueryRepository customerQueryRepository;
 
-  public CustomerQueryInteractionService(CustomerQueryRepository customerQueryRepository) {
+  public CustomerQueryServiceInteraction(CustomerQueryRepository customerQueryRepository) {
     this.customerQueryRepository = customerQueryRepository;
   }
 

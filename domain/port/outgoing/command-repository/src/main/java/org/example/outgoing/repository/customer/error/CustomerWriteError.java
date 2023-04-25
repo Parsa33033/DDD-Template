@@ -6,7 +6,7 @@ import org.example.model.config.error.OperationErrorCode;
 
 public class CustomerWriteError extends OperationError {
 
-  private static String CUSTOMER_EXISTS = OperationErrorCode.CUSTOMER_EXISTS;
+  public static String CUSTOMER_EXISTS = OperationErrorCode.CUSTOMER_EXISTS;
 
   protected CustomerWriteError(final String code) {
     super(code);

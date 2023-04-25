@@ -52,5 +52,11 @@
       <version>${parent.version}</version>
       <scope>compile</scope>
     </dependency>
+    <dependency>
+      <groupId>org.example</groupId>
+      <artifactId>command-repository</artifactId>
+      <version>${parent.version}</version>
+      <scope>compile</scope>
+    </dependency>
   </dependencies>
 </project>

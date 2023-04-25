@@ -18,7 +18,7 @@ import org.mockito.Mockito;
 
 public class CustomerQueryRepositoryMock implements RepositoryMock<CustomerQueryRepository> {
 
-  private CustomerQueryRepository customerQueryRepository;
+  private final CustomerQueryRepository customerQueryRepository;
 
   public CustomerQueryRepositoryMock() {
     customerQueryRepository = Mockito.mock(CustomerQueryRepository.class);
@@ -59,7 +59,7 @@ public class CustomerQueryRepositoryMock implements RepositoryMock<CustomerQuery
 
   private static class FindByUUIDMatcher implements ArgumentMatcher<CustomerQuery> {
 
-    private UUID identifier;
+    private final UUID identifier;
 
     FindByUUIDMatcher(UUID uuid) {
       this.identifier = uuid;
