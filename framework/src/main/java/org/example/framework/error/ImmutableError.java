@@ -23,6 +23,11 @@ public final class ImmutableError implements Error {
     return code;
   }
 
+  @Override
+  public String message() {
+    return this.message;
+  }
+
   public static ImmutableError of(String code, String hint) {
     return new ImmutableError(code, tryGetMessageForCode(code), hint);
   }

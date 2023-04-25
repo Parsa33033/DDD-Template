@@ -11,4 +11,6 @@ public interface Error {
   }
 
   String code();
+
+  String message();
 }
