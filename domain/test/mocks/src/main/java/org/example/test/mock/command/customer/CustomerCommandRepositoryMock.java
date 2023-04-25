@@ -52,9 +52,15 @@ public class CustomerCommandRepositoryMock implements
     return customerWriteCommandArgumentCaptor
         .getAllValues()
         .stream()
-        .filter(wc -> wc.customer().identifier().equals(identifier))
+        .filter(wc -> wc.customer() == null || identifier.equals(wc.customer().identifier()))
+        .filter(wc -> wc.customerChange().createCustomer() == null || identifier.equals(wc
+            .customerChange()
+            .createCustomer().customerData().identifier()))
+        .filter(wc -> wc.customerChange().updateCustomer() == null || identifier.equals(wc
+            .customerChange()
+            .updateCustomer().customerData().identifier()))
         .findAny()
-        .get();
+        .orElse(null);
   }
 
   @Override

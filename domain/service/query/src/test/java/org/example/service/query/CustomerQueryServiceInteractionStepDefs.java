@@ -54,13 +54,13 @@ public class CustomerQueryServiceInteractionStepDefs {
   @Then("customer {customerTest} is returned")
   public void customerIsReturned(CustomerTest customerTest) {
     assertTrue(result.isOk());
-    assertTrue(result.object.identifier().equals(customerTest.customerData().identifier()));
+    assertTrue(result.object().identifier().equals(customerTest.customerData().identifier()));
   }
 
   @Then("result is returned with error {string}")
   public void customerIsError(String error) {
     assertTrue(result.isError());
-    assertEquals(error, result.error.code);
+    assertEquals(error, result.error().code);
   }
 
   private void setupMockData() {

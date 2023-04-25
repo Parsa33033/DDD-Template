@@ -7,8 +7,8 @@ import org.example.framework.error.Error;
 
 public final class Result<O, E extends Error> {
 
-  public final O object;
-  public final E error;
+  private final O object;
+  private final E error;
 
   private Result(O object, E error) {
     this.object = object;
@@ -57,10 +57,19 @@ public final class Result<O, E extends Error> {
     }
   }
 
-  public static <C, D, E extends Error> Function<Result<D, E>, CompletableFuture<Result<D, Error>>> checkPreviousFutureResult(
+  public static <C, D, E extends Error> Function<Result<D, E>,
+      CompletableFuture<Result<D, Error>>> checkPreviousFutureResult(
       Function<D, CompletableFuture<Result<D, Error>>> func) {
     return prev -> prev.isOk()
         ? func.apply(prev.object)
         : CompletableFuture.completedFuture(Result.error(prev.error));
+  }
+
+  public O object() {
+    return object;
+  }
+
+  public E error() {
+    return error;
   }
 }
