@@ -14,17 +14,18 @@ import org.example.model.sharedkernel.valueobject.simple.ProductName;
 public class Order extends ReadOnlyEntity<Order, OrderData> {
 
   @NotNull
-  private Identifier orderIdentifier;
+  private final Identifier orderIdentifier;
 
   @NotNull
-  private ProductName productName;
+  private final ProductName productName;
 
   @NotNull
-  private CustomerReference customerReference;
+  private final CustomerReference customerReference;
 
   public Order(OrderBuilder builder) {
     this.orderIdentifier = builder.orderIdentifier;
     this.productName = builder.productName;
+    this.customerReference = builder.customerReference;
   }
 
   @Override
@@ -33,10 +34,13 @@ public class Order extends ReadOnlyEntity<Order, OrderData> {
         .builder()
         .identifier(tryGetObject(orderIdentifier, Identifier::value))
         .productName(tryGetObject(productName, ProductName::value))
+        .customerReferenceData(tryGetObject(
+            customerReference,
+            CustomerReference::toDataTransferObject))
         .build();
   }
 
-  public Order fromDataTransferObject(OrderData orderData) {
+  public static Order fromDataTransferObject(OrderData orderData) {
     return new OrderBuilder(orderData).build();
   }
 
@@ -54,8 +58,7 @@ public class Order extends ReadOnlyEntity<Order, OrderData> {
     protected Order build() {
       this.orderIdentifier = tryCreateObject(this.dto.identifier(), Identifier::create);
       this.productName = tryCreateObject(this.dto.productName(), ProductName::create);
-      this.customerReference = tryCreateObject(
-          this.dto.customerReferenceData(),
+      this.customerReference = tryCreateObject(this.dto.customerReferenceData(),
           CustomerReference::fromDataTransferObject);
       return new Order(this);
     }

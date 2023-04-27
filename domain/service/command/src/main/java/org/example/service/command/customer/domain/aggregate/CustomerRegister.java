@@ -2,6 +2,7 @@ package org.example.service.command.customer.domain.aggregate;
 
 import static org.example.framework.model.DomainObjectBuilder.tryGetObject;
 
+import javax.validation.constraints.NotNull;
 import org.example.dto.aggregate.CustomerRegisterData;
 import org.example.dto.aggregate.ImmutableCustomerRegisterData;
 import org.example.dto.graph.CustomerData;
@@ -11,12 +12,13 @@ import org.example.framework.result.Result;
 import org.example.model.sharedkernel.readonlyentity.Customer;
 import org.example.outgoing.dto.change.CustomerChange;
 import org.example.outgoing.dto.change.ImmutableCustomerChange;
-import org.example.outgoing.dto.operation.ImmutableCreateCustomer;
-import org.example.outgoing.dto.operation.ImmutableUpdateCustomer;
+import org.example.outgoing.dto.operation.customer.ImmutableCreateCustomer;
+import org.example.outgoing.dto.operation.customer.ImmutableUpdateCustomer;
 import org.example.service.command.customer.domain.error.CustomerRegisterError;
 
 public class CustomerRegister implements AggregateRoot<CustomerRegister, CustomerRegisterData> {
 
+  @NotNull
   private Customer customer;
 
   public CustomerRegister(CustomerRegisterBuilder builder) {
