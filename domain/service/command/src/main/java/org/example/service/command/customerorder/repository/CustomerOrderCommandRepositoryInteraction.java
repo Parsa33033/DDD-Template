@@ -1,24 +1,17 @@
-package org.example.service.command.order.repository;
+package org.example.service.command.customerorder.repository;
 
 import java.util.concurrent.CompletableFuture;
 import org.example.dto.aggregate.ImmutableCustomerOrderData;
-import org.example.dto.aggregate.ImmutableCustomerRegisterData;
-import org.example.dto.graph.CustomerData;
-import org.example.dto.graph.ImmutableOrderData;
 import org.example.dto.graph.OrderData;
 import org.example.framework.error.Error;
 import org.example.framework.interaction.RepositoryInteraction;
 import org.example.framework.result.Result;
-import org.example.outgoing.repository.customer.CustomerCommandRepository;
-import org.example.outgoing.repository.customer.dto.CustomerWriteCommand;
-import org.example.outgoing.repository.customer.dto.ImmutableCustomerReadCommand;
-import org.example.outgoing.repository.customer.dto.ImmutableCustomerWriteCommand;
 import org.example.outgoing.repository.order.OrderCommandRepository;
 import org.example.outgoing.repository.order.dto.ImmutableOrderReadCommand;
 import org.example.outgoing.repository.order.dto.ImmutableOrderWriteCommand;
 import org.example.outgoing.repository.order.dto.OrderWriteCommand;
-import org.example.service.command.order.CustomerOrderCommandServiceInteractionData;
-import org.example.service.command.order.domain.aggregate.CustomerOrder;
+import org.example.service.command.customerorder.CustomerOrderCommandServiceInteractionData;
+import org.example.service.command.customerorder.domain.aggregate.CustomerOrder;
 
 public class CustomerOrderCommandRepositoryInteraction implements
     RepositoryInteraction<CustomerOrderCommandServiceInteractionData, OrderData, CustomerOrder> {

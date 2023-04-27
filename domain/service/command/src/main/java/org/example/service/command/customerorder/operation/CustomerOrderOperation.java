@@ -1,4 +1,4 @@
-package org.example.service.command.order.operation;
+package org.example.service.command.customerorder.operation;
 
 import static org.example.framework.result.Result.checkPreviousFutureResult;
 
@@ -9,15 +9,14 @@ import org.example.framework.error.Error;
 import org.example.framework.error.OperationError;
 import org.example.framework.interaction.OperationInteraction;
 import org.example.framework.result.Result;
-import org.example.incoming.service.customer.CustomerServiceCommand;
-import org.example.incoming.service.customer.CustomerServiceError;
 import org.example.incoming.service.order.CustomerOrderServiceCommand;
 import org.example.incoming.service.order.CustomerOrderServiceError;
-import org.example.service.command.order.domain.aggregate.CustomerOrder;
-import org.example.service.command.order.repository.CustomerOrderCommandRepositoryInteraction;
+import org.example.service.command.customerorder.domain.aggregate.CustomerOrder;
+import org.example.service.command.customerorder.repository.CustomerOrderCommandRepositoryInteraction;
 
 public class CustomerOrderOperation implements
-    OperationInteraction<CustomerOrderServiceCommand, CustomerOrderOperationData, CustomerOrderServiceError, OrderData> {
+    OperationInteraction<CustomerOrderServiceCommand, CustomerOrderOperationData,
+        CustomerOrderServiceError, OrderData> {
 
   private final CustomerOrderCommandRepositoryInteraction customerCommandRepositoryInteraction;
 
@@ -38,11 +37,14 @@ public class CustomerOrderOperation implements
   @Override
   public CompletableFuture<Result<CustomerOrderOperationData, CustomerOrderServiceError>> validate(
       final CustomerOrderServiceCommand command) {
-    if (command.order() == null || command.order().identifier() == null) {
-      return CompletableFuture.completedFuture(Result.error(CustomerOrderServiceError.of(OperationError.OTHER)));
+    if (command.order() == null) {
+      return CompletableFuture.completedFuture(Result.error(CustomerOrderServiceError.of(
+          OperationError.OTHER)));
     }
     CustomerOrderOperationData data = new CustomerOrderOperationData();
-    data.setOrderIdentifier(Optional.of(command.order().identifier()));
+    data.setOrderIdentifier(command.order().identifier() != null
+        ? Optional.ofNullable(command.order().identifier())
+        : Optional.empty());
     data.setOrderData(command.order());
     return CompletableFuture.completedFuture(Result.ok(data));
   }
@@ -50,7 +52,9 @@ public class CustomerOrderOperation implements
   @Override
   public CompletableFuture<Result<CustomerOrderOperationData, Error>> read(
       final CustomerOrderOperationData data) {
-    return this.customerCommandRepositoryInteraction.read(data).thenApply(result -> Result.ok(data));
+    return this.customerCommandRepositoryInteraction
+        .read(data)
+        .thenApply(result -> Result.ok(data));
   }
 
   @Override

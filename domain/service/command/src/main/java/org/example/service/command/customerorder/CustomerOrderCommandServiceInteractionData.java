@@ -1,12 +1,10 @@
-package org.example.service.command.order;
+package org.example.service.command.customerorder;
 
 import java.util.Optional;
 import java.util.UUID;
 import org.example.framework.dto.InteractionData;
-import org.example.model.sharedkernel.valueobject.simple.Identifier;
-import org.example.outgoing.dto.change.CustomerChange;
 import org.example.outgoing.dto.change.OrderChange;
-import org.example.service.command.order.domain.aggregate.CustomerOrder;
+import org.example.service.command.customerorder.domain.aggregate.CustomerOrder;
 
 public class CustomerOrderCommandServiceInteractionData implements InteractionData {
 

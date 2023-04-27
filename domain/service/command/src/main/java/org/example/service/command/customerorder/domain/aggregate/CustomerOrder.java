@@ -1,4 +1,4 @@
-package org.example.service.command.order.domain.aggregate;
+package org.example.service.command.customerorder.domain.aggregate;
 
 import static org.example.framework.model.DomainObjectBuilder.tryGetObject;
 import static org.example.framework.model.DomainObjectBuilder.tryGetObjects;
@@ -7,19 +7,16 @@ import java.util.Set;
 import javax.validation.constraints.NotNull;
 import org.example.dto.aggregate.CustomerOrderData;
 import org.example.dto.aggregate.ImmutableCustomerOrderData;
-import org.example.dto.graph.CustomerData;
 import org.example.dto.graph.OrderData;
 import org.example.framework.aggregate.AggregateRoot;
 import org.example.framework.model.DomainObjectBuilder;
 import org.example.framework.result.Result;
-import org.example.incoming.service.order.CustomerOrderServiceError;
 import org.example.model.sharedkernel.readonlyentity.Customer;
 import org.example.model.sharedkernel.readonlyentity.Order;
-import org.example.outgoing.dto.change.ImmutableCustomerChange;
 import org.example.outgoing.dto.change.ImmutableOrderChange;
 import org.example.outgoing.dto.change.OrderChange;
 import org.example.outgoing.dto.operation.order.ImmutableCreateOrder;
-import org.example.service.command.order.domain.error.CustomerOrderError;
+import org.example.service.command.customerorder.domain.error.CustomerOrderError;
 
 public class CustomerOrder implements AggregateRoot<CustomerOrder, CustomerOrderData> {
 

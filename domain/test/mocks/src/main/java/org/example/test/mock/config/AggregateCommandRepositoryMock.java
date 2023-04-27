@@ -1,6 +1,7 @@
 package org.example.test.mock.config;
 
 
+import java.util.List;
 import java.util.UUID;
 import org.example.framework.command.ReadCommand;
 import org.example.framework.command.WriteCommand;
@@ -17,6 +18,8 @@ public interface AggregateCommandRepositoryMock<R extends Repository, RC extends
     RepositoryMock<R> {
 
   WC captureWriteCommand(UUID identifier);
+
+  List<WC> captureAllWriteCommands();
 
   public void mockGetResult(
       UUID identifier, Result<RR, RE> result);

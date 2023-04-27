@@ -1,4 +1,4 @@
-package org.example.service.command.order.domain.error;
+package org.example.service.command.customerorder.domain.error;
 
 import org.example.framework.error.OperationError;
 import org.example.model.config.error.OperationErrorCode;

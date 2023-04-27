@@ -1,8 +1,7 @@
-package org.example.service.command.order.operation;
+package org.example.service.command.customerorder.operation;
 
-import org.example.dto.graph.CustomerData;
 import org.example.dto.graph.OrderData;
-import org.example.service.command.order.CustomerOrderCommandServiceInteractionData;
+import org.example.service.command.customerorder.CustomerOrderCommandServiceInteractionData;
 
 public class CustomerOrderOperationData extends CustomerOrderCommandServiceInteractionData {
 

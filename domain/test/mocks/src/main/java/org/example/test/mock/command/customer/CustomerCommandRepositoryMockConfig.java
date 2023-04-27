@@ -1,5 +1,6 @@
 package org.example.test.mock.command.customer;
 
+import java.util.List;
 import java.util.UUID;
 import org.example.outgoing.repository.customer.CustomerCommandRepository;
 import org.example.outgoing.repository.customer.CustomerQueryRepository;
@@ -31,6 +32,11 @@ public class CustomerCommandRepositoryMockConfig implements
   @Override
   public CustomerWriteCommand captureCommand(UUID identifier) {
     return customerCommandRepositoryMock.captureWriteCommand(identifier);
+  }
+
+  @Override
+  public List<CustomerWriteCommand> captureAllCommands() {
+    return customerCommandRepositoryMock.captureAllWriteCommands();
   }
 
   @Override

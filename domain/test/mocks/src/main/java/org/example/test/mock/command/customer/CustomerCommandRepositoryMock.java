@@ -4,6 +4,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.argThat;
 import static org.mockito.Mockito.doReturn;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
@@ -61,6 +62,11 @@ public class CustomerCommandRepositoryMock implements
             .updateCustomer().customerData().identifier()))
         .findAny()
         .orElse(null);
+  }
+
+  @Override
+  public List<CustomerWriteCommand> captureAllWriteCommands() {
+    return customerWriteCommandArgumentCaptor.getAllValues();
   }
 
   @Override

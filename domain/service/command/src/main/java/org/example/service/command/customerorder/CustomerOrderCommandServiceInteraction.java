@@ -1,20 +1,15 @@
-package org.example.service.command.order;
+package org.example.service.command.customerorder;
 
 import java.util.concurrent.CompletableFuture;
-import org.example.dto.graph.CustomerData;
 import org.example.dto.graph.OrderData;
 import org.example.framework.result.Result;
-import org.example.incoming.service.customer.CustomerCommandService;
-import org.example.incoming.service.customer.CustomerServiceCommand;
-import org.example.incoming.service.customer.CustomerServiceError;
 import org.example.incoming.service.order.CustomerOrderCommandService;
 import org.example.incoming.service.order.CustomerOrderServiceCommand;
 import org.example.incoming.service.order.CustomerOrderServiceError;
 import org.example.model.config.error.DomainErrorCodeMessageInitializer;
-import org.example.outgoing.repository.customer.CustomerCommandRepository;
 import org.example.outgoing.repository.order.OrderCommandRepository;
-import org.example.service.command.order.operation.CustomerOrderOperation;
-import org.example.service.command.order.repository.CustomerOrderCommandRepositoryInteraction;
+import org.example.service.command.customerorder.operation.CustomerOrderOperation;
+import org.example.service.command.customerorder.repository.CustomerOrderCommandRepositoryInteraction;
 
 public class CustomerOrderCommandServiceInteraction implements CustomerOrderCommandService {
 
