@@ -50,11 +50,6 @@
       <scope>compile</scope>
     </dependency>
     <dependency>
-      <groupId>org.example</groupId>
-      <artifactId>bean</artifactId>
-      <version>${parent.version}</version>
-    </dependency>
-    <dependency>
       <groupId>io.cucumber</groupId>
       <artifactId>messages</artifactId>
       <version>19.1.4</version>

@@ -31,5 +31,22 @@
       <version>${parent.version}</version>
       <scope>compile</scope>
     </dependency>
+    <dependency>
+      <groupId>org.example</groupId>
+      <artifactId>query-service</artifactId>
+      <version>${parent.version}</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.example</groupId>
+      <artifactId>query-repository</artifactId>
+      <version>${parent.version}</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.example</groupId>
+      <artifactId>query</artifactId>
+      <version>${parent.version}</version>
+    </dependency>
   </dependencies>
 </project>

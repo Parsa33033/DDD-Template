@@ -74,7 +74,7 @@
     </dependency>
     <dependency>
       <groupId>org.example</groupId>
-      <artifactId>bean</artifactId>
+      <artifactId>infrastructure</artifactId>
       <version>${parent.version}</version>
     </dependency>
   </dependencies>
