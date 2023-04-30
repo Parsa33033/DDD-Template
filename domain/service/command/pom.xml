@@ -78,10 +78,6 @@
       <artifactId>steps</artifactId>
       <version>${parent.version}</version>
     </dependency>
-    <dependency>
-      <groupId>org.example</groupId>
-      <artifactId>bean</artifactId>
-      <version>${parent.version}</version>
-    </dependency>
+
   </dependencies>
 </project>

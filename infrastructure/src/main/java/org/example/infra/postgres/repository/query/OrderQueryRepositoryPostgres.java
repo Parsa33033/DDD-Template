@@ -20,6 +20,6 @@ public class OrderQueryRepositoryPostgres implements OrderQueryRepository {
   @Override
   public CompletableFuture<Result<OrderData, OrderQueryError>> getOrderByUUID(final CustomerQuery query) {
     return CompletableFuture.completedFuture(Result.ok(OrderMapper.mapToDTO(orderRepository.getReferenceById(
-        query.customerIdentifier()))));
+        query.customerIdentifier().toString()))));
   }
 }

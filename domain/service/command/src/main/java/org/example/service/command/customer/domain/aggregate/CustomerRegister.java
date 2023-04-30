@@ -2,10 +2,12 @@ package org.example.service.command.customer.domain.aggregate;
 
 import static org.example.framework.model.DomainObjectBuilder.tryGetObject;
 
+import java.util.UUID;
 import javax.validation.constraints.NotNull;
 import org.example.dto.aggregate.CustomerRegisterData;
 import org.example.dto.aggregate.ImmutableCustomerRegisterData;
 import org.example.dto.graph.CustomerData;
+import org.example.dto.graph.ImmutableCustomerData;
 import org.example.framework.aggregate.AggregateRoot;
 import org.example.framework.model.DomainObjectBuilder;
 import org.example.framework.result.Result;
@@ -31,15 +33,22 @@ public class CustomerRegister implements AggregateRoot<CustomerRegister, Custome
       if (customerDoesNotChange(customerData)) {
         return Result.error(CustomerRegisterError.of(CustomerRegisterError.CUSTOMER_ALREADY_EXISTS));
       }
+
       return Result.ok(ImmutableCustomerChange
           .builder()
           .customerData(this.customer.toDataTransferObject())
           .updateCustomer(ImmutableUpdateCustomer.builder().customerData(customerData).build())
           .build());
     }
+
     return Result.ok(ImmutableCustomerChange
         .builder()
-        .createCustomer(ImmutableCreateCustomer.builder().customerData(customerData).build())
+        .createCustomer(ImmutableCreateCustomer
+            .builder()
+            .customerData(ImmutableCustomerData
+                .copyOf(customerData)
+                .withIdentifier(UUID.randomUUID()))
+            .build())
         .build());
   }
 

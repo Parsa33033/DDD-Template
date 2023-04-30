@@ -14,18 +14,18 @@ public class Customer {
 
   @Id
   @Column(name = "customer_id")
-  private UUID customerId;
+  private String customerId;
 
   private String name;
 
   @OneToMany(mappedBy = "customer")
   private Set<Order> orders;
 
-  public UUID getCustomerId() {
+  public String getCustomerId() {
     return customerId;
   }
 
-  public void setCustomerId(final UUID customerId) {
+  public void setCustomerId(final String customerId) {
     this.customerId = customerId;
   }
 

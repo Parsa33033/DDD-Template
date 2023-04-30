@@ -14,10 +14,10 @@ public final class OrderMapper {
         .builder()
         .customerReferenceData(ImmutableCustomerReferenceData
             .builder()
-            .customerIdentifier(order.getCustomer().getCustomerId())
+            .customerIdentifier(UUID.fromString(order.getCustomer().getCustomerId()))
             .build())
         .productName(order.getProductName())
-        .identifier(order.getOrderId())
+        .identifier(UUID.fromString(order.getOrderId()))
         .build();
   }
 }

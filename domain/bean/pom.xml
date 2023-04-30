@@ -48,5 +48,17 @@
       <artifactId>query</artifactId>
       <version>${parent.version}</version>
     </dependency>
+    <dependency>
+      <groupId>org.example</groupId>
+      <artifactId>command-service</artifactId>
+      <version>${parent.version}</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.example</groupId>
+      <artifactId>command</artifactId>
+      <version>${parent.version}</version>
+      <scope>compile</scope>
+    </dependency>
   </dependencies>
 </project>

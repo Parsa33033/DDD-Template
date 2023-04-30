@@ -20,7 +20,7 @@ public class DomainErrorCodeMessageInitializer extends ErrorCodeMessageInitializ
   }
 
   private void addFieldErrors() {
-    addMessage(OTHER, MSG_CUSTOMER_NOT_FOUND);
+    addMessage(OTHER, MSG_OTHER);
     addMessage(CUSTOMER_NOT_FOUND, MSG_CUSTOMER_NOT_FOUND);
     addMessage(CUSTOMER_EXISTS, MSG_CUSTOMER_EXISTS);
     addMessage(INVALID_REQUEST, MSG_INVALID_REQUEST);

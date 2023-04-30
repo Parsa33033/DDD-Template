@@ -12,13 +12,13 @@ public final class CustomerMapper {
   public static CustomerData mapToDTO(Customer customer) {
     return ImmutableCustomerData.builder()
         .name(customer.getName())
-        .identifier(customer.getCustomerId())
+        .identifier(UUID.fromString(customer.getCustomerId()))
         .build();
   }
 
   public static Customer mapToEntity(CustomerData customerData) {
     Customer customer = new Customer();
-    customer.setCustomerId(customerData.identifier());
+    customer.setCustomerId(customerData.identifier().toString());
     customer.setName(customerData.name());
     return customer;
   }

@@ -37,11 +37,11 @@ public class EnsureCustomerOperation implements
   @Override
   public CompletableFuture<Result<EnsureCustomerOperationData, CustomerServiceError>> validate(
       final CustomerServiceCommand command) {
-    if (command.customer() == null || command.customer().identifier() == null) {
+    if (command.customer() == null) {
       return CompletableFuture.completedFuture(Result.error(CustomerServiceError.of(OperationError.OTHER)));
     }
     EnsureCustomerOperationData data = new EnsureCustomerOperationData();
-    data.setCustomerIdentifier(Optional.of(command.customer().identifier()));
+    data.setCustomerIdentifier(command.customer().identifier() != null ? Optional.of(command.customer().identifier()): Optional.empty());
     data.setCustomerData(command.customer());
     return CompletableFuture.completedFuture(Result.ok(data));
   }

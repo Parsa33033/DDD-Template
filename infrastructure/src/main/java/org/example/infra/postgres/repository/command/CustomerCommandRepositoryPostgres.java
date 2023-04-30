@@ -38,7 +38,7 @@ public class CustomerCommandRepositoryPostgres implements CustomerCommandReposit
       return CompletableFuture.completedFuture(Result.error(CustomerReadError.of(CustomerReadError.INVALID_REQUEST)));
     }
 
-    Optional<Customer> customerOptional = customerRepository.findById(command.customerIdentifier());
+    Optional<Customer> customerOptional = customerRepository.findById(command.customerIdentifier().toString());
 
     if (customerOptional.isEmpty()) {
       return CompletableFuture.completedFuture(Result.error(CustomerReadError.of(CustomerReadError.CUSTOMER_NOT_FOUND)));
@@ -52,6 +52,7 @@ public class CustomerCommandRepositoryPostgres implements CustomerCommandReposit
 
   @Override
   public CompletableFuture<Result<Nothing, CustomerWriteError>> write(final CustomerWriteCommand command) {
+    logger.info("----> write command {}", command);
     if (command == null || (command.customerChange() == null && command.customer() == null)) {
       return CompletableFuture.completedFuture(Result.error(CustomerWriteError.of(CustomerWriteError.INVALID_REQUEST)));
     }

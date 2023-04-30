@@ -1,0 +1,19 @@
+package org.example.bean.service;
+
+import org.example.incoming.service.customer.CustomerCommandService;
+import org.example.outgoing.repository.customer.CustomerCommandRepository;
+import org.example.service.command.customer.CustomerCommandServiceInteraction;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
+
+@Component
+public class CommandServices {
+
+
+  @Bean
+  @Autowired
+  public CustomerCommandService customerCommandService(CustomerCommandRepository customerCommandRepository) {
+    return new CustomerCommandServiceInteraction(customerCommandRepository);
+  }
+}

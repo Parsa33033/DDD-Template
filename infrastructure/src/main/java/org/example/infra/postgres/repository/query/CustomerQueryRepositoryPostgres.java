@@ -28,7 +28,7 @@ public class CustomerQueryRepositoryPostgres implements CustomerQueryRepository 
 
   @Override
   public CompletableFuture<Result<CustomerData, CustomerQueryError>> getCustomerByUUID(final CustomerQuery query) {
-    Optional<Customer> customerOptional = customerRepository.findById(query.customerIdentifier());
+    Optional<Customer> customerOptional = customerRepository.findById(query.customerIdentifier().toString());
     return customerOptional
         .<CompletableFuture<Result<CustomerData, CustomerQueryError>>>map(customer -> CompletableFuture.completedFuture(
             Result.ok(CustomerMapper.mapToDTO(customer))))

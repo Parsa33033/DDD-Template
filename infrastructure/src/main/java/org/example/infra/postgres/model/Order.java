@@ -14,7 +14,7 @@ public class Order {
 
   @Id
   @Column(name = "order_id")
-  private UUID orderId;
+  private String orderId;
 
   private String productName;
 
@@ -22,11 +22,11 @@ public class Order {
   @JoinColumn(name = "customer_id", referencedColumnName = "customer_id")
   private Customer customer;
 
-  public UUID getOrderId() {
+  public String getOrderId() {
     return orderId;
   }
 
-  public void setOrderId(final UUID orderId) {
+  public void setOrderId(final String orderId) {
     this.orderId = orderId;
   }
 
