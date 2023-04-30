@@ -15,4 +15,5 @@ public class QueryServices {
   public CustomerQueryService customerQueryService(CustomerQueryRepository customerQueryRepository) {
     return new CustomerQueryServiceInteraction(customerQueryRepository);
   }
+
 }

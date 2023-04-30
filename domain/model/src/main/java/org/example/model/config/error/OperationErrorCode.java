@@ -5,6 +5,7 @@ import org.example.framework.error.ErrorCode;
 public interface OperationErrorCode extends ErrorCode {
 
   String OTHER = "OTHER";
+  String INVALID_REQUEST = "INVALID_REQUEST";
 
   // customer
   String CUSTOMER_NOT_FOUND = "CUSTOMER_NOT_FOUND";
