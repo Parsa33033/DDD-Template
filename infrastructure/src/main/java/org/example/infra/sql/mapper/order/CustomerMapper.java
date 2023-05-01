@@ -1,9 +1,9 @@
-package org.example.infra.postgres.mapper.order;
+package org.example.infra.sql.mapper.order;
 
 import java.util.UUID;
 import org.example.dto.graph.CustomerData;
 import org.example.dto.graph.ImmutableCustomerData;
-import org.example.infra.postgres.model.Customer;
+import org.example.infra.sql.model.Customer;
 
 
 public final class CustomerMapper {

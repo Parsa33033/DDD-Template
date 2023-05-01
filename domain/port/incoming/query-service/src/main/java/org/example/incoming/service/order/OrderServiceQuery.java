@@ -1,11 +1,13 @@
-package org.example.outgoing.repository.order;
+package org.example.incoming.service.order;
 
 import java.util.UUID;
 import org.example.framework.query.Query;
 import org.immutables.value.Value.Immutable;
+import org.springframework.lang.Nullable;
 
 @Immutable
-public interface OrderQuery extends Query {
+public interface OrderServiceQuery extends Query {
 
+  @Nullable
   UUID orderIdentifier();
 }

@@ -5,6 +5,7 @@ import org.example.model.config.error.OperationErrorCode;
 
 public class OrderWriteError extends OperationError {
 
+  public static String INVALID_REQUEST = OperationErrorCode.INVALID_REQUEST;
   public static String ORDER_EXISTS = OperationErrorCode.ORDER_EXISTS;
 
   protected OrderWriteError(final String code) {

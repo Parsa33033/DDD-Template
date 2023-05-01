@@ -1,8 +1,11 @@
-package org.example.application.customer;
+package org.example.application.controllers.customer;
+
+import static org.example.application.mapper.ResultMapper.mapResult;
 
 import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 import org.example.application.dto.CustomerDTO;
+import org.example.application.mapper.CustomerMapper;
 import org.example.dto.graph.CustomerData;
 import org.example.dto.graph.ImmutableCustomerData;
 import org.example.framework.result.Result;
@@ -11,23 +14,22 @@ import org.example.incoming.service.customer.CustomerQueryService;
 import org.example.incoming.service.customer.CustomerServiceError;
 import org.example.incoming.service.customer.ImmutableCustomerServiceCommand;
 import org.example.incoming.service.customer.ImmutableCustomerServiceQuery;
-import org.example.outgoing.repository.customer.CustomerQueryError;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/customer")
 public class CustomerApplication {
-
-  Logger logger = LoggerFactory.getLogger(CustomerApplication.class);
 
   private final CustomerQueryService customerQueryService;
   private final CustomerCommandService customerCommandService;
+  private final CustomerMapper mapper = new CustomerMapper();
 
   @Autowired
   public CustomerApplication(
@@ -37,34 +39,45 @@ public class CustomerApplication {
     this.customerCommandService = customerCommandService;
   }
 
-  @GetMapping("/customer/{id}")
+  @GetMapping("/{id}")
   public CustomerDTO getCustomer(
       @PathVariable("id")
       String id) throws ExecutionException, InterruptedException {
-    logger.info("-----> reading");
-    Result<CustomerData, CustomerServiceError> result =  this.customerQueryService.getCustomerByUUID(ImmutableCustomerServiceQuery
+
+    Result<CustomerData, CustomerServiceError> result = this.customerQueryService.getCustomerByUUID(ImmutableCustomerServiceQuery
         .builder()
         .customerIdentifier(UUID.fromString(id))
         .build()).get();
-    if (result.isOk()) {
-      CustomerDTO customerDTO = new CustomerDTO();
-      customerDTO.setIdentifier(result.object().identifier().toString());
-      customerDTO.setName(result.object().name());
-      return customerDTO;
-    }
-    throw new IllegalStateException("sodjf");
+
+   return mapResult(result, mapper::mapFrom);
   }
 
-  @PostMapping("/customer")
-  public void createCustomer(
+  @PostMapping
+  public CustomerDTO createCustomer(
       @RequestBody
-      CustomerDTO customerDTO) {
-    logger.info("-----> creating");
-    this.customerCommandService.ensureCustomer(ImmutableCustomerServiceCommand
+      CustomerDTO customerDTO) throws ExecutionException, InterruptedException {
+
+    Result<CustomerData, CustomerServiceError> result = this.customerCommandService.ensureCustomer(ImmutableCustomerServiceCommand
         .builder()
         .customer(ImmutableCustomerData.builder()
             .name(customerDTO.getName()).build())
-        .build());
+        .build()).get();
+
+    return mapResult(result, mapper::mapFrom);
   }
 
+  @PutMapping
+  public CustomerDTO updateCustomer(
+      @RequestBody
+      CustomerDTO customerDTO) throws ExecutionException, InterruptedException {
+
+    Result<CustomerData, CustomerServiceError> result = this.customerCommandService.ensureCustomer(ImmutableCustomerServiceCommand
+        .builder()
+        .customer(ImmutableCustomerData.builder()
+            .identifier(UUID.fromString(customerDTO.getIdentifier()))
+            .name(customerDTO.getName()).build())
+        .build()).get();
+
+    return mapResult(result, mapper::mapFrom);
+  }
 }

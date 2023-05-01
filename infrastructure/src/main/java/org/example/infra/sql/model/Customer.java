@@ -1,7 +1,6 @@
-package org.example.infra.postgres.model;
+package org.example.infra.sql.model;
 
 import java.util.Set;
-import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;

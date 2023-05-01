@@ -7,7 +7,7 @@ import org.example.test.data.model.CustomerTestData;
 
 public class John implements CustomerTestData {
 
-  private final String IDENTIFIER = "588faf9c-e150-11ed-b5ea-0242ac120002";
+  public static String IDENTIFIER = "588faf9c-e150-11ed-b5ea-0242ac120002";
 
   @Override
   public CustomerData customerData() {

@@ -10,5 +10,5 @@ import org.example.outgoing.repository.customer.CustomerQueryError;
 
 public interface OrderQueryRepository extends QueryRepository {
 
-  CompletableFuture<Result<OrderData, OrderQueryError>> getOrderByUUID(CustomerQuery query);
+  CompletableFuture<Result<OrderData, OrderQueryError>> getOrderByUUID(OrderQuery query);
 }

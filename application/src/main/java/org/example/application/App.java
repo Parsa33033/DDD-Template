@@ -8,8 +8,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 @ComponentScan({"org.example", "org.example.infra"})
-@EntityScan("org.example.infra.postgres.model")
-@EnableJpaRepositories("org.example.infra.postgres.repository")
+@EntityScan("org.example.infra.sql.model")
+@EnableJpaRepositories("org.example.infra.sql.repository")
 public class App {
 
   public static void main(String[] args) {

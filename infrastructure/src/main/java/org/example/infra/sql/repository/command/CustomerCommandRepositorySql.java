@@ -1,19 +1,15 @@
-package org.example.infra.postgres.repository.command;
+package org.example.infra.sql.repository.command;
 
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import org.example.dto.aggregate.CustomerRegisterData;
 import org.example.dto.aggregate.ImmutableCustomerRegisterData;
-import org.example.dto.graph.CustomerData;
 import org.example.framework.result.Nothing;
 import org.example.framework.result.Result;
-import org.example.infra.postgres.mapper.order.CustomerMapper;
-import org.example.infra.postgres.model.Customer;
-import org.example.infra.postgres.repository.CustomerRepository;
+import org.example.infra.sql.mapper.order.CustomerMapper;
+import org.example.infra.sql.model.Customer;
+import org.example.infra.sql.repository.CustomerRepository;
 import org.example.outgoing.repository.customer.CustomerCommandRepository;
-import org.example.outgoing.repository.customer.CustomerQuery;
-import org.example.outgoing.repository.customer.CustomerQueryError;
-import org.example.outgoing.repository.customer.CustomerQueryRepository;
 import org.example.outgoing.repository.customer.dto.CustomerReadCommand;
 import org.example.outgoing.repository.customer.dto.CustomerWriteCommand;
 import org.example.outgoing.repository.customer.error.CustomerReadError;
@@ -21,13 +17,13 @@ import org.example.outgoing.repository.customer.error.CustomerWriteError;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class CustomerCommandRepositoryPostgres implements CustomerCommandRepository {
+public class CustomerCommandRepositorySql implements CustomerCommandRepository {
 
-  Logger logger = LoggerFactory.getLogger(CustomerCommandRepositoryPostgres.class);
+  Logger logger = LoggerFactory.getLogger(CustomerCommandRepositorySql.class);
 
   private final CustomerRepository customerRepository;
 
-  public CustomerCommandRepositoryPostgres(CustomerRepository customerRepository) {
+  public CustomerCommandRepositorySql(CustomerRepository customerRepository) {
     this.customerRepository = customerRepository;
   }
 

@@ -4,9 +4,11 @@ import static org.example.framework.model.DomainObjectBuilder.tryGetObject;
 import static org.example.framework.model.DomainObjectBuilder.tryGetObjects;
 
 import java.util.Set;
+import java.util.UUID;
 import javax.validation.constraints.NotNull;
 import org.example.dto.aggregate.CustomerOrderData;
 import org.example.dto.aggregate.ImmutableCustomerOrderData;
+import org.example.dto.graph.ImmutableOrderData;
 import org.example.dto.graph.OrderData;
 import org.example.framework.aggregate.AggregateRoot;
 import org.example.framework.model.DomainObjectBuilder;
@@ -35,16 +37,23 @@ public class CustomerOrder implements AggregateRoot<CustomerOrder, CustomerOrder
     if (orderAlreadyExists(orderData)) {
       return Result.error(CustomerOrderError.of(CustomerOrderError.ORDER_ALREADY_EXISTS));
     }
+
     return Result.ok(ImmutableOrderChange
         .builder()
-        .createOrder(ImmutableCreateOrder.builder().orderData(orderData).build())
+        .createOrder(ImmutableCreateOrder
+            .builder()
+            .orderData(ImmutableOrderData.copyOf(orderData).withIdentifier(UUID.randomUUID()))
+            .build())
         .build());
   }
 
   public boolean orderAlreadyExists(OrderData orderData) {
     return orders != null && orders
         .stream()
-        .anyMatch(order -> order.toDataTransferObject().identifier().equals(orderData.identifier()));
+        .anyMatch(order -> order
+            .toDataTransferObject()
+            .identifier()
+            .equals(orderData.identifier()));
   }
 
   @Override

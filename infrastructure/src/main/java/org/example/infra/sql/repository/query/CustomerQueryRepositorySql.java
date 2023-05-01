@@ -1,28 +1,25 @@
-package org.example.infra.postgres.repository.query;
+package org.example.infra.sql.repository.query;
 
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import org.example.dto.graph.CustomerData;
-import org.example.dto.graph.OrderData;
-import org.example.framework.error.Error;
 import org.example.framework.result.Result;
-import org.example.infra.postgres.mapper.order.CustomerMapper;
-import org.example.infra.postgres.model.Customer;
-import org.example.infra.postgres.repository.CustomerRepository;
+import org.example.infra.sql.mapper.order.CustomerMapper;
+import org.example.infra.sql.model.Customer;
+import org.example.infra.sql.repository.CustomerRepository;
 import org.example.outgoing.repository.customer.CustomerQuery;
 import org.example.outgoing.repository.customer.CustomerQueryError;
 import org.example.outgoing.repository.customer.CustomerQueryRepository;
-import org.example.outgoing.repository.order.OrderQueryError;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class CustomerQueryRepositoryPostgres implements CustomerQueryRepository {
+public class CustomerQueryRepositorySql implements CustomerQueryRepository {
 
-  Logger logger = LoggerFactory.getLogger(CustomerQueryRepositoryPostgres.class);
+  Logger logger = LoggerFactory.getLogger(CustomerQueryRepositorySql.class);
 
   private final CustomerRepository customerRepository;
 
-  public CustomerQueryRepositoryPostgres(CustomerRepository customerRepository) {
+  public CustomerQueryRepositorySql(CustomerRepository customerRepository) {
     this.customerRepository = customerRepository;
   }
 

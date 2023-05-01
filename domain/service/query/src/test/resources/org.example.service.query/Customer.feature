@@ -7,4 +7,4 @@ Feature: Get customer
 
   Scenario: request for john returns unsuccessful result
     When customer John is queried
-    Then result is returned with error "CUSTOMER_NOT_FOUND"
+    Then customer result is returned with error "CUSTOMER_NOT_FOUND"

@@ -41,7 +41,9 @@ public class EnsureCustomerOperation implements
       return CompletableFuture.completedFuture(Result.error(CustomerServiceError.of(OperationError.OTHER)));
     }
     EnsureCustomerOperationData data = new EnsureCustomerOperationData();
-    data.setCustomerIdentifier(command.customer().identifier() != null ? Optional.of(command.customer().identifier()): Optional.empty());
+    data.setCustomerIdentifier(command.customer().identifier() != null
+        ? Optional.of(command.customer().identifier())
+        : Optional.empty());
     data.setCustomerData(command.customer());
     return CompletableFuture.completedFuture(Result.ok(data));
   }
@@ -49,7 +51,9 @@ public class EnsureCustomerOperation implements
   @Override
   public CompletableFuture<Result<EnsureCustomerOperationData, Error>> read(
       final EnsureCustomerOperationData data) {
-    return this.customerCommandRepositoryInteraction.read(data).thenApply(result -> Result.ok(data));
+    return this.customerCommandRepositoryInteraction
+        .read(data)
+        .thenApply(result -> Result.ok(data));
   }
 
   @Override
@@ -73,7 +77,10 @@ public class EnsureCustomerOperation implements
   public Result<CustomerData, CustomerServiceError> combineResult(
       final Result<EnsureCustomerOperationData, Error> result) {
     return result
-        .map(EnsureCustomerOperationData::getCustomerData)
+        .map(r -> r.getCustomerChange().createCustomer() != null ? r
+            .getCustomerChange()
+            .createCustomer()
+            .customerData() : r.getCustomerChange().updateCustomer().customerData())
         .mapError(e -> CustomerServiceError.of(e.code()));
   }
 }

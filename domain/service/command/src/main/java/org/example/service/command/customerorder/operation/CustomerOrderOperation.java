@@ -78,7 +78,10 @@ public class CustomerOrderOperation implements
   public Result<OrderData, CustomerOrderServiceError> combineResult(
       final Result<CustomerOrderOperationData, Error> result) {
     return result
-        .map(CustomerOrderOperationData::getOrderData)
+        .map(r -> r.getOrderChange().createOrder() != null ? r
+            .getOrderChange()
+            .createOrder()
+            .orderData() : r.getOrderChange().updateOrder().orderData())
         .mapError(e -> CustomerOrderServiceError.of(e.code()));
   }
 }

@@ -57,7 +57,7 @@ public class CustomerQueryServiceInteractionStepDefs {
     assertTrue(result.object().identifier().equals(customerTest.customerData().identifier()));
   }
 
-  @Then("result is returned with error {string}")
+  @Then("customer result is returned with error {string}")
   public void customerIsError(String error) {
     assertTrue(result.isError());
     assertEquals(error, result.error().code);

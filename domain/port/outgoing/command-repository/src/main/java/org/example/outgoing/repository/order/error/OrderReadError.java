@@ -5,6 +5,7 @@ import org.example.model.config.error.OperationErrorCode;
 
 public class OrderReadError extends OperationError {
 
+  public static String INVALID_REQUEST = OperationErrorCode.INVALID_REQUEST;
   public static String ORDER_NOT_FOUND = OperationErrorCode.ORDER_NOT_FOUND;
 
   protected OrderReadError(final String code) {

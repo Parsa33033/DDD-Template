@@ -1,7 +1,6 @@
-package org.example.infra.postgres.repository;
+package org.example.infra.sql.repository;
 
-import java.util.UUID;
-import org.example.infra.postgres.model.Order;
+import org.example.infra.sql.model.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
