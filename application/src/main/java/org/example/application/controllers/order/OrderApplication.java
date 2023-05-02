@@ -25,6 +25,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ *
+ */
 @RestController
 @RequestMapping("/order")
 public class OrderApplication {
@@ -41,6 +44,13 @@ public class OrderApplication {
     this.customerOrderCommandService = customerOrderCommandService;
   }
 
+  /**
+   *
+   * @param id
+   * @return
+   * @throws ExecutionException
+   * @throws InterruptedException
+   */
   @GetMapping("/{id}")
   public OrderDTO getOrder(
       @PathVariable("id")
@@ -56,6 +66,13 @@ public class OrderApplication {
     return mapResult(result, mapper::mapFrom);
   }
 
+  /**
+   *
+   * @param orderDTO
+   * @return
+   * @throws ExecutionException
+   * @throws InterruptedException
+   */
   @PostMapping
   public OrderDTO createOrder(
       @RequestBody
@@ -78,6 +95,13 @@ public class OrderApplication {
     return mapResult(result, mapper::mapFrom);
   }
 
+  /**
+   *
+   * @param orderDTO
+   * @return
+   * @throws ExecutionException
+   * @throws InterruptedException
+   */
   @PutMapping
   public OrderDTO updateOrder(
       @RequestBody
