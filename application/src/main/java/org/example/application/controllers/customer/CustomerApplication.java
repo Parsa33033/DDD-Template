@@ -5,6 +5,7 @@ import static org.example.application.mapper.ResultMapper.mapResult;
 import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 import org.example.application.dto.CustomerDTO;
+import org.example.application.exceptions.FunctionalErrorException;
 import org.example.application.mapper.CustomerMapper;
 import org.example.dto.graph.CustomerData;
 import org.example.dto.graph.ImmutableCustomerData;
@@ -58,7 +59,6 @@ public class CustomerApplication {
         .builder()
         .customerIdentifier(UUID.fromString(id))
         .build()).get();
-
    return mapResult(result, mapper::mapFrom);
   }
 

@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public class InternalErrorException extends RuntimeException {
 
   public InternalErrorException(String message) {
-    super(message);
+    super("internal service error: " + message);
   }
 }
